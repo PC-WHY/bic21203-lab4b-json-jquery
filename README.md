@@ -14,6 +14,7 @@ bic21203-lab4b-json-jquery/
 ├── books.json
 ├── books.html
 └── jquery-dom.html
+```
 
 ## Setup and Running Instructions
 Because modern browsers block fetch() requests over the file:// protocol due to CORS security policies, Question 2 must be run through a local development server:

@@ -29,15 +29,18 @@ Because modern browsers block fetch() requests over the file:// protocol due to 
 Created books.json containing a top-level "books" array with two book objects (The Great Gatsby and To Kill a Mockingbird), using double-quoted property names, string values for title and author, numeric values for publicationYear, and string arrays for genres.
 
 Code:
+
 <img width="565" height="417" alt="Screenshot 2026-11-19 133949" src="https://github.com/user-attachments/assets/3f2af585-a69c-491f-ae26-76730280e997" />
 
 ## Question 2 — Retrieve and Display JSON Data
 Created books.html using fetch() with async/await to read books.json, display the first book's title, the second book's author, and the genres grouped by book title using document.createElement() and textContent, along with try...catch error handling for failed requests or invalid JSON.
 
 Valid Data Output:
+
 <img width="502" height="327" alt="Screenshot 2026-11-19 135653" src="https://github.com/user-attachments/assets/b529663d-7f33-4ad9-bd0e-58b45443bcec" />
 
 Error Handling Output:
+
 <img width="478" height="272" alt="Screenshot 2026-11-19 135810" src="https://github.com/user-attachments/assets/fec0f6d6-866a-4976-a49f-cc793a5e6319" />
 
 
@@ -45,4 +48,5 @@ Error Handling Output:
 Created jquery-dom.html importing the official jQuery 4.0.0 full-build CDN (https://code.jquery.com/jquery-4.0.0.min.js) to update #myElement via .text(), style #myDIV via .addClass("myStyle"), and handle #myButton clicks via .on("click", ...).
 
 Output:
+
 <img width="951" height="207" alt="Screenshot 2026-11-19 140118" src="https://github.com/user-attachments/assets/efa08b88-8615-459f-9396-9aa8da7d013f" />

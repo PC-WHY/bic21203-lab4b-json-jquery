@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 - Retrieve and Display JSON Data</title>
+</head>
+<body>
+  <h1>Book Collection Details</h1>
+
+  <p><strong>First Book Title:</strong> <span id="firstBookTitle"></span></p>
+  <p><strong>Second Book Author:</strong> <span id="secondBookAuthor"></span></p>
+
+  <h2>Genres by Book Title</h2>
+  <ul id="bookGenresList"></ul>
+
+  <p id="errorMessage" role="alert" style="color: red;"></p>
+
+  <script>
+    async function loadBooks() {
+      const firstTitleEl = document.getElementById("firstBookTitle");
+      const secondAuthorEl = document.getElementById("secondBookAuthor");
+      const genresListEl = document.getElementById("bookGenresList");
+      const errorEl = document.getElementById("errorMessage");
+
+      try {
+        const response = await fetch("books.json");
+
+        // Handle unsuccessful HTTP responses (e.g., 404 Not Found)
+        if (!response.ok) {
+          throw new Error(`Failed to fetch JSON (HTTP ${response.status})`);
+        }
+
+        // Parse JSON (throws a SyntaxError if books.json is malformed)
+        const data = await response.json();
+
+        if (!Array.isArray(data.books) || data.books.length < 2) {
+          throw new Error("Invalid JSON structure: expected at least two books.");
+        }
+
+        // (a) Title of the first book
+        firstTitleEl.textContent = data.books[0].title;
+
+        // (b) Author of the second book
+        secondAuthorEl.textContent = data.books[1].author;
+
+        // (c) Genres of both books, clearly grouped by book title
+        genresListEl.textContent = "";
+        data.books.forEach((book) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = `${book.title} — ${book.genres.join(", ")}`;
+          genresListEl.appendChild(listItem);
+        });
+      } catch (error) {
+        errorEl.textContent = `Error loading books: ${error.message}`;
+      }
+    }
+
+    loadBooks();
+  </script>
+</body>
+</html>
